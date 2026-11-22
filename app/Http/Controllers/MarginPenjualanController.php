@@ -129,13 +129,9 @@ class MarginPenjualanController extends Controller
             }
 
             if ($statusBaru === 1) {
-                DB::update(
-                    'UPDATE v_margin_update
-                    SET status_margin = 0
-                    WHERE status_margin = 1
-                    AND nomor_margin <> ?',
-                    [$id]
-                );
+                $hasil = DB::selectOne('SELECT fn_aktifkan_margin(?) AS hasil', [$id]);
+
+                abort_if((int) $hasil->hasil === 0, 404);
             }
 
             DB::update(
