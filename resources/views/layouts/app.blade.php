@@ -73,6 +73,7 @@
         @if ($isAdministrator || $isWarehouse)
             <a href="/pengadaan" class="{{ $aktif('pengadaan*') }}">{!! $svg('pengadaan') !!} Pengadaan</a>
             <a href="/penerimaan" class="{{ $aktif('penerimaan*') }}">{!! $svg('terima') !!} Penerimaan</a>
+            <a href="/retur" class="{{ $aktif('retur*') }}">{!! $svg('terima') !!} Retur</a>
         @endif
         @if ($isAdministrator || $isCashier)
             <a href="/penjualan" class="{{ $aktif('penjualan*') }}">{!! $svg('jual') !!} Penjualan</a>

@@ -10,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ReturController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -132,6 +133,19 @@ Route::middleware('auth')->group(function (): void {
             ->name('penerimaan.create');
         Route::post('/penerimaan/{id}', [PenerimaanController::class, 'store'])
             ->name('penerimaan.store');
+
+        Route::get('/retur', [ReturController::class, 'index'])
+            ->name('retur.index');
+
+        Route::get('/retur/create', [ReturController::class, 'create'])
+            ->name('retur.create');
+
+        Route::post('/retur', [ReturController::class, 'store'])
+            ->name('retur.store');
+
+        Route::get('/retur/riwayat/{id}', [ReturController::class, 'show'])
+            ->whereNumber('id')
+            ->name('retur.show');
     });
 
     Route::middleware('role:administrator,cashier')->group(function (): void {

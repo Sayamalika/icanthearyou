@@ -130,7 +130,6 @@ class MarginPenjualanController extends Controller
 
             if ($statusBaru === 1) {
                 $hasil = DB::selectOne('SELECT fn_aktifkan_margin(?) AS hasil', [$id]);
-
                 abort_if((int) $hasil->hasil === 0, 404);
             }
 
