@@ -40,18 +40,14 @@ class PengadaanController extends Controller
 
     if ($vendorTerpilih !== null) {
         $barang = DB::select(
-            'SELECT DISTINCT
-                p.nomor_barang,
-                p.produk,
-                p.harga_dasar,
-                p.kategori
-            FROM v_vendor_jenis_barang AS vj
-            JOIN v_tampilkan_produk AS p
-                ON p.kode_jenis = vj.jenis
-            WHERE vj.nomor_vendor = ?
-            AND p.status = 1
-            ORDER BY p.produk',
-            [$vendorTerpilih]
+            'SELECT
+            nomor_barang,
+            produk,
+            harga_dasar,
+            kategori
+        FROM v_tampilkan_produk
+        WHERE status = 1
+        ORDER BY produk',
         );
     }
 
